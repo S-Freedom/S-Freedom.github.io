@@ -1,3 +1,18 @@
+---
+layout:     post
+title:     通过cocosPod 引入第三方框架，并增加到代码仓库
+subtitle:   为项目增加cocoapods支持
+date:       2015-05-05
+author:     黄鹏飞
+header-img: img/post-bg-ios9-web.jpg
+catalog: true
+tags:
+- iOS
+- 开源框架
+---
+
+
+
 ##通过cocosPod 引入第三方框架，并增加到代码仓库
 
 ###1.新建项目 testDemo

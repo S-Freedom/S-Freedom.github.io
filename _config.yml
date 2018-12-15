@@ -5,8 +5,8 @@ header-img: img/post-bg-desk.jpg
 email: 445412679@qq.com
 description: "A journey of a thousand miles, begins with a single step. "
 keyword: "黄鹏飞的博客, JAVA, Mysql, Redis, iOS, Apple, iPhone, Swift"
-url: "http://brokenAngeller.github.io"          # your host, for absolute URL
-github_repo: "https://github.com/brokenAngeller/brokenAngeller.github.io.git" # you code repository
+url: "https://s-freedom.github.io"          # your host, for absolute URL
+github_repo: "https://github.com/s-freedom/s-freedom.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
