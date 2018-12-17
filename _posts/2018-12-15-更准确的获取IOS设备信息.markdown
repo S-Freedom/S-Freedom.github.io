@@ -1,0 +1,67 @@
+---
+layout:     post
+title:     通过cocosPod 引入第三方框架，并增加到代码仓库
+subtitle:   为项目增加cocoapods支持
+date:       2015-05-05
+author:     黄鹏飞
+header-img: img/post-bg-ios9-web.jpg
+catalog: true
+tags:
+- iOS
+- 开源框架
+---
+
+
+
+##更准确的获取IOS设备信息
+
+###获取IOS 设备信息
+简单的获取设备信息的话，参考UIDevice API就可以了
+
+NSLog(@"uniqueIdentifier: %@", [[UIDevice currentDevice] uniqueIdentifier]);  // 获取uuid
+NSLog(@"name: %@", [[UIDevice currentDevice] name]); // 获取用户名称
+NSLog(@"systemName: %@", [[UIDevice currentDevice] systemName]); // 获取设备系统名称 :iPhone OS
+NSLog(@"systemVersion: %@", [[UIDevice currentDevice] systemVersion]); // 获取系统版本
+NSLog(@"model: %@", [[UIDevice currentDevice] model]); // 获取设备，如Iphone
+NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);  获取设备，如Iphone
+
+
+But,But
+
+###获取更加精准的设备信息
+
+有的时候后台需要统计一些数据，就需要获取更加精准的设备信息，不过目前只能通过获取机器相关信息才能够取得到，下面是示例代码
+
++ (NSString *)getDeviceInfo{
+// 需要#import "sys/utsname.h"
+struct utsname systemInfo;
+uname(&systemInfo);
+NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+
+if ([deviceString isEqualToString:@"iPhone1,1"]) return @"iPhone 2G (A1203)";
+if ([deviceString isEqualToString:@"iPhone1,2"]) return @"iPhone 3G (A1241/A1324)";
+if ([deviceString isEqualToString:@"iPhone2,1"]) return @"iPhone 3GS (A1303/A1325)";
+if ([deviceString isEqualToString:@"iPhone3,1"]) return @"iPhone 4 (A1332)";
+if ([deviceString isEqualToString:@"iPhone3,2"]) return @"iPhone 4 (A1332)";
+if ([deviceString isEqualToString:@"iPhone3,3"]) return @"iPhone 4 (A1349)";
+if ([deviceString isEqualToString:@"iPhone4,1"]) return @"iPhone 4S (A1387/A1431)";
+if ([deviceString isEqualToString:@"iPhone5,1"]) return @"iPhone 5 (A1428)";
+if ([deviceString isEqualToString:@"iPhone5,2"]) return @"iPhone 5 (A1429/A1442)";
+if ([deviceString isEqualToString:@"iPhone5,3"]) return @"iPhone 5c (A1456/A1532)";
+if ([deviceString isEqualToString:@"iPhone5,4"]) return @"iPhone 5c (A1507/A1516/A1526/A1529)";
+if ([deviceString isEqualToString:@"iPhone6,1"]) return @"iPhone 5s (A1453/A1533)";
+if ([deviceString isEqualToString:@"iPhone6,2"]) return @"iPhone 5s (A1457/A1518/A1528/A1530)";
+if ([deviceString isEqualToString:@"iPhone7,1"]) return @"iPhone 6 Plus (A1522/A1524)";
+if ([deviceString isEqualToString:@"iPhone7,2"]) return @"iPhone 6 (A1549/A1586)";
+if ([deviceString isEqualToString:@"iPod1,1"])   return @"iPod Touch 1G";
+if ([deviceString isEqualToString:@"iPod2,1"])   return @"iPod Touch 2G";
+if ([deviceString isEqualToString:@"iPod3,1"])   return @"iPod Touch 3G";
+if ([deviceString isEqualToString:@"iPod4,1"])   return @"iPod Touch 4G";
+if ([deviceString isEqualToString:@"iPad1,1"])   return @"iPad";
+if ([deviceString isEqualToString:@"iPad2,1"])   return @"iPad 2 (WiFi)";
+if ([deviceString isEqualToString:@"iPad2,2"])   return @"iPad 2 (GSM)";
+if ([deviceString isEqualToString:@"iPad2,3"])   return @"iPad 2 (CDMA)";
+if ([deviceString isEqualToString:@"i386"])      return @"Simulator";
+if ([deviceString isEqualToString:@"x86_64"])    return @"Simulator";
+return deviceString;
+}
